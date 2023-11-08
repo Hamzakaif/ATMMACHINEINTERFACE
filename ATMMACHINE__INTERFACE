@@ -1,0 +1,74 @@
+import java.util.Scanner;
+class ATM1{
+    int pin = 2342;
+    float balance;
+
+  public void checkpin(){
+      System.out.println("Enter your pin here..");
+      Scanner Sc = new Scanner(System.in);
+      int enterpin = Sc.nextInt();
+      if(enterpin==pin);
+      menu();
+  }
+  public void menu(){
+      System.out.println("Enter your choice:");
+      System.out.println("1.Check A/C Balance:");
+      System.out.println("2.withdraw money:");
+      System.out.println("3..deposit money:");
+      System.out.println("4.Exit:");
+      Scanner Sc= new Scanner(System.in);
+      int opt = Sc.nextInt();
+
+      if(opt==1){
+          checkbalance();
+      } else if (opt==2) {
+          withdraw();
+
+      } else if (opt==3) {
+          deposit();
+
+      }
+      else if (opt==4){
+          return;
+      }
+      else{
+          System.out.println("Enter a valid choice: ");
+          menu();
+      }
+
+  }
+    public void checkbalance(){
+        System.out.println("Balance is"+balance);
+        menu();
+
+    }
+    public void withdraw(){
+      System.out.println("Enter your Amount:");
+      Scanner Sc = new Scanner(System.in);
+      int amount = Sc.nextInt();
+      if(amount > balance){
+          System.out.println("insufficient amount");
+      }
+      else{
+          balance = balance-amount;
+          System.out.println("money withdraw successfully...");
+          menu();
+      }
+
+    }
+    public void deposit(){
+      System.out.println("Enter the amount: ");
+      Scanner Sc = new Scanner(System.in);
+
+      float amount = Sc.nextInt();
+      balance = balance+amount;
+      System.out.println("money deposite succesfully....");
+      menu();
+    }
+}
+
+public class ATMinterface {
+    ATM1 obj = new ATM1();
+    obj.checkpin();
+
+}
